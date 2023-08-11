@@ -29,6 +29,11 @@ MEMBER_DOWNLOAD = None
 PREMIERE_DOWNLOAD = None
 PRIVATED_DOWNLOAD = None
 
+HOSHINOVA_PORT = None # e.g 1104
+HOSHINOVA_DOWNLOAD = None # eg. "D:\\example"
+HOSHINOVA_MEMBER_DOWNLOAD = None # eg. "D:\\members_example"
+HOSHINOVA_PREMIERE_DOWNLOAD = None # eg. "D:\\premiere_example"
+
 # Number of threads for pekopeko's ytarchive-raw-go
 PRIVATED_DOWNLOAD_THREADS = 24
 

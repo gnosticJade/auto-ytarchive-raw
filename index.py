@@ -339,11 +339,14 @@ while True:
 
                             utils.log(f" {message}")
 
-                    # If os.system call of python index.py has an extra argument(in this case -d) to trigger download
-                    if const.DOWNLOAD and not fetched[channel_name][video_id]["downloaded"]:
-                        # Start the download
+                    if not fetched[channel_name][video_id]["downloaded"]:
                         try:
-                            setDownloaded = live_download.download(video_id, live_status)
+                            # Send to hoshinova instead
+                            if const.HOSHINOVA_PORT is not None and const.HOSHINOVA_DOWNLOAD is not None:
+                                setDownloaded = utils.send_to_hoshinova(video_id, live_status)
+                            elif const.DOWNLOAD is not None:
+                            # Start the download
+                                setDownloaded = live_download.download(video_id, live_status)
                             fetched[channel_name][video_id]["downloaded"] = setDownloaded
                         except Exception as e:
                             print(e)

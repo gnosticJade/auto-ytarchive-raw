@@ -179,6 +179,26 @@ def urlopen(url, retry=0, source_address="random", use_cookie=False):
             raise e
 
 
+def send_to_hoshinova(video_id, live_status):
+    if live_status == PlayabilityStatus.MEMBERS_ONLY and const.HOSHINOVA_MEMBER_DOWNLOAD is not None:
+        output_directory = const.HOSHINOVA_MEMBER_DOWNLOAD
+    elif live_status == PlayabilityStatus.PREMIERE:
+        output_directory = const.HOSHINOVA_PREMIERE_DOWNLOAD
+    else:
+        output_directory = const.HOSHINOVA_DOWNLOAD
+
+    hoshinova_url = f"http://127.0.0.1:{const.HOSHINOVA_PORT}/api/task"
+    task = {
+        "video_url": f"https://www.youtube.com/watch?v={video_id}",
+        "output_directory": output_directory
+    }
+
+    req = urllib.request.Request(hoshinova_url, json.dumps(task).encode(), method="POST")
+    req.add_header('Content-Type', 'application/json')
+    with urlopen(req) as response:
+        return response.status == 202
+
+
 def is_live(channel_id, use_cookie=False, retry=0):
     # Use /streams instead of embed playlist
     if const.COOKIE:
