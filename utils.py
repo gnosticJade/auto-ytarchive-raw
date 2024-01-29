@@ -187,7 +187,7 @@ def send_to_hoshinova(video_id, live_status):
     else:
         output_directory = const.HOSHINOVA_DOWNLOAD
 
-    hoshinova_url = f"http://127.0.0.1:{const.HOSHINOVA_PORT}/api/task"
+    hoshinova_url = f"http://{const.HOSHINOVA_HOST}:{const.HOSHINOVA_PORT}/api/task"
     task = {
         "video_url": f"https://www.youtube.com/watch?v={video_id}",
         "output_directory": output_directory

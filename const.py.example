@@ -29,6 +29,7 @@ MEMBER_DOWNLOAD = None
 PREMIERE_DOWNLOAD = None
 PRIVATED_DOWNLOAD = None
 
+HOSHINOVA_HOST = None # e.g `127.0.0.1` or `hoshinova`
 HOSHINOVA_PORT = None # e.g 1104
 HOSHINOVA_DOWNLOAD = None # eg. "D:\\example"
 HOSHINOVA_MEMBER_DOWNLOAD = None # eg. "D:\\members_example"
