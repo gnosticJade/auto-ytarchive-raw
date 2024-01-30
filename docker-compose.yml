@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  auto-ytarchive-raw:
+    image: ghcr.io/gnosticjade/auto-ytarchive-raw:latest
+    environment:
+      - HOSHINOVA_HOST=127.0.0.1 # change to your hoshinova host
+      - HOSHINOVA_PORT=1104
+      - HOSHINOVA_DOWNLOAD_DIR=/tmp # change to the destination download directory *for Hoshinova*!
+    volumes:
+      - ./cookie:/app/cookie
+      - ./channels.json:/app/channels.json
+      - ./const.py:/app/const.py
+      - ./text.py:/app/text.py
